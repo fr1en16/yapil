@@ -2,8 +2,10 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 import Clock from "@/components/Clock";
+import { ImageZoom } from "@/components/ui/image-zoom";
 import { HighlightHover } from "@/components/HighlightHover";
 import { formatTypography } from "@/lib/utils";
 
@@ -177,6 +179,63 @@ export default function CompassCase() {
                 ) : (
                   <Volume2 size={16} style={{ color: "#4ade80" }} />
                 )}
+              </div>
+            </div>
+          </section>
+
+          <hr className="divider" />
+
+          <section className="section">
+            <span className="section-label" style={{ marginBottom: "24px", lineHeight: 1.1 }}>
+              {formatTypography("Макеты сайта")}
+            </span>
+            <div className="media-grid-wrapper">
+              <div className="media-masonry-grid">
+                {/* Column 1 */}
+                <div className="media-masonry-column">
+                  {[1, 3, 5, 7].map((num) => (
+                    <div key={num} className="media-masonry-item">
+                      <ImageZoom>
+                        <Image
+                          src={`/case/RV/${num}.webp`}
+                          alt={`Рыкунов и Кудряшов — макет ${num}`}
+                          width={0}
+                          height={0}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            display: "block",
+                            borderRadius: "2px",
+                          }}
+                        />
+                      </ImageZoom>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Column 2 */}
+                <div className="media-masonry-column">
+                  {[2, 4, 6].map((num) => (
+                    <div key={num} className="media-masonry-item">
+                      <ImageZoom>
+                        <Image
+                          src={`/case/RV/${num}.webp`}
+                          alt={`Рыкунов и Кудряшов — макет ${num}`}
+                          width={0}
+                          height={0}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          style={{
+                            width: "100%",
+                            height: "auto",
+                            display: "block",
+                            borderRadius: "2px",
+                          }}
+                        />
+                      </ImageZoom>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
