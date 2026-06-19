@@ -117,7 +117,7 @@ export default function ShandingCase() {
             }}
           >
             <Image
-              src="/case/shanding.webp"
+              src="/case/Shanding.webp"
               alt="Shanding — обложка кейса"
               width={0}
               height={0}
@@ -159,7 +159,7 @@ export default function ShandingCase() {
             >
               <video
                 ref={videoRef}
-                src="/case/shanding/shanding.webm"
+                src="/case/shanding/Shanding.webm"
                 autoPlay
                 muted
                 loop

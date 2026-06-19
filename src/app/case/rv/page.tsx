@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import ThemeToggle from "@/components/ThemeToggle";
 import Clock from "@/components/Clock";
 import { HighlightHover } from "@/components/HighlightHover";
@@ -101,19 +100,18 @@ export default function CompassCase() {
               marginBottom: "40px",
             }}
           >
-            <Image
-              src="/case/Рыкунов и Кудряшов.webm"
-              alt="Рыкунов и Кудряшов — обложка кейса"
-              width={0}
-              height={0}
-              sizes="100vw"
+            <video
+              src="/case/Роман Рыкунов и Владислав Кудряшов.webm"
+              autoPlay
+              muted
+              loop
+              playsInline
               style={{
                 width: "100%",
                 height: "auto",
                 display: "block",
                 borderRadius: "2px",
               }}
-              priority
             />
           </div>
 
