@@ -25,10 +25,6 @@ export default function ContactForm() {
   // Focus states
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
-  // Dropdown open state
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
   // Validation errors
   const [errors, setErrors] = useState({
     name: false,
@@ -47,20 +43,6 @@ export default function ContactForm() {
 
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  // Close dropdown on click outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   // Format phone input as mask: +7 XXX XXX XXXX
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -257,49 +239,58 @@ export default function ContactForm() {
                 />
               </div>
 
-              {/* Service custom dropdown */}
-              <div ref={dropdownRef} className="relative w-full pb-1">
+              {/* Service custom checkboxes */}
+              <div className="relative w-full pb-1 flex flex-col h-full">
                 <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
                   {formatTypography("Вид услуги *")}
                 </span>
-                <div
-                  className="w-full bg-transparent py-2 text-[15px] font-normal tracking-tight text-[var(--fg)] cursor-pointer flex justify-between items-center select-none"
-                  onClick={() => {
-                    if (submitting) return;
-                    setDropdownOpen(!dropdownOpen);
-                    if (errors.service)
-                      setErrors((prev) => ({ ...prev, service: false }));
-                  }}
-                >
-                  <span className={cn(!service && "text-[var(--fg-muted)] opacity-30")}>
-                    {service ? formatTypography(service) : formatTypography("Выберите услугу")}
-                  </span>
-                  <motion.svg
-                    width="10"
-                    height="6"
-                    viewBox="0 0 10 6"
-                    fill="none"
-                    className="text-[var(--fg-muted)]"
-                    animate={{ rotate: dropdownOpen ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <path
-                      d="M1 1L5 5L9 1"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </motion.svg>
+                <div className="flex flex-col gap-2 mt-2 flex-grow">
+                  {SERVICES_OPTIONS.map((opt) => {
+                    const isSelected = service === opt;
+                    return (
+                      <div
+                        key={opt}
+                        onClick={() => {
+                          if (submitting) return;
+                          setService(opt);
+                          if (errors.service)
+                            setErrors((prev) => ({ ...prev, service: false }));
+                        }}
+                        className="flex items-center gap-2.5 cursor-pointer py-1 select-none group"
+                      >
+                        {/* Custom checkbox box */}
+                        <div
+                          className={cn(
+                            "w-3.5 h-3.5 border flex items-center justify-center rounded-[2px] transition-colors",
+                            isSelected ? "border-[var(--accent)]" : "border-[var(--border)] group-hover:border-[var(--fg-muted)]"
+                          )}
+                          style={{
+                            borderColor: errors.service ? "var(--accent)" : undefined
+                          }}
+                        >
+                          {isSelected && (
+                            <motion.div
+                              className="w-2 h-2 bg-[var(--accent)] rounded-[1px]"
+                              initial={{ scale: 0 }}
+                              animate={{ scale: 1 }}
+                              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            />
+                          )}
+                        </div>
+                        <span className={cn(
+                          "text-[13px] transition-colors leading-[1.1]",
+                          isSelected ? "text-[var(--fg)] font-medium" : "text-[var(--fg-muted)] group-hover:text-[var(--fg)]"
+                        )}>
+                          {formatTypography(opt)}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 h-[1px]"
                   animate={{
-                    backgroundColor: errors.service
-                      ? "var(--accent)"
-                      : dropdownOpen
-                      ? "var(--accent)"
-                      : "var(--border)",
+                    backgroundColor: errors.service ? "var(--accent)" : "transparent",
                     x: shakeFields.service ? [-4, 4, -4, 4, 0] : 0,
                   }}
                   transition={{
@@ -307,50 +298,24 @@ export default function ContactForm() {
                     x: { duration: 0.4 },
                   }}
                 />
-
-                <AnimatePresence>
-                  {dropdownOpen && (
-                    <motion.ul
-                      initial={{ opacity: 0, y: 5 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 5 }}
-                      className="absolute left-0 right-0 mt-1 bg-[var(--surface)] border border-[var(--border)] rounded-[2px] py-1 z-50 shadow-md max-h-60 overflow-y-auto"
-                      style={{
-                        backdropFilter: "blur(8px)",
-                        backgroundColor: "color-mix(in srgb, var(--surface) 95%, transparent)",
-                      }}
-                    >
-                      {SERVICES_OPTIONS.map((opt) => (
-                        <li
-                          key={opt}
-                          onClick={() => {
-                            setService(opt);
-                            setDropdownOpen(false);
-                          }}
-                          className="px-4 py-2.5 text-[14px] leading-[1.1] text-[var(--fg)] hover:bg-[var(--accent)] hover:text-white cursor-pointer transition-colors"
-                        >
-                          {formatTypography(opt)}
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
               </div>
 
-              <div className="relative w-full pb-1">
+              {/* Task field */}
+              <div className="relative w-full pb-1 flex flex-col h-full">
                 <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
                   {formatTypography("Задача")}
                 </span>
-                <textarea
-                  placeholder={formatTypography("Опишите ваш проект и задачи")}
-                  disabled={submitting}
-                  rows={3}
-                  className="w-full bg-transparent border-none outline-none py-2 text-[15px] font-normal tracking-tight text-[var(--fg)] placeholder-[var(--fg-muted)] placeholder-opacity-30 resize-none min-h-[80px]"
-                  value={task}
-                  onChange={(e) => setTask(e.target.value)}
-                  onFocus={() => setFocusedField("task")}
-                  onBlur={() => setFocusedField(null)}
-                />
+                <div className="relative w-full flex-grow flex">
+                  <textarea
+                    placeholder={formatTypography("Опишите ваш проект и задачи")}
+                    disabled={submitting}
+                    className="w-full bg-transparent border-none outline-none py-2 text-[15px] font-normal tracking-tight text-[var(--fg)] placeholder-[var(--fg-muted)] placeholder-opacity-30 resize-none min-h-[140px] h-full flex-grow"
+                    value={task}
+                    onChange={(e) => setTask(e.target.value)}
+                    onFocus={() => setFocusedField("task")}
+                    onBlur={() => setFocusedField(null)}
+                  />
+                </div>
                 <motion.div
                   className="absolute bottom-0 left-0 right-0 h-[1px]"
                   animate={{
