@@ -174,7 +174,7 @@ export default function ContactForm() {
               
               {/* Name field */}
               <div className="relative w-full pb-1">
-                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
+                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-3">
                   {formatTypography("Имя *")}
                 </span>
                 <input
@@ -209,7 +209,7 @@ export default function ContactForm() {
 
               {/* Phone field */}
               <div className="relative w-full pb-1">
-                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
+                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-3">
                   {formatTypography("Телефон *")}
                 </span>
                 <input
@@ -241,10 +241,10 @@ export default function ContactForm() {
 
               {/* Service custom checkboxes */}
               <div className="relative w-full pb-1 flex flex-col h-full">
-                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
+                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-3">
                   {formatTypography("Вид услуги *")}
                 </span>
-                <div className="flex flex-col gap-2 mt-2 flex-grow">
+                <div className="flex flex-col gap-2 mt-0.5 flex-grow">
                   {SERVICES_OPTIONS.map((opt) => {
                     const isSelected = service === opt;
                     return (
@@ -302,7 +302,7 @@ export default function ContactForm() {
 
               {/* Task field */}
               <div className="relative w-full pb-1 flex flex-col h-full">
-                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
+                <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-3">
                   {formatTypography("Задача")}
                 </span>
                 <div className="relative w-full flex-grow flex">
