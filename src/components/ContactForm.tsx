@@ -258,7 +258,7 @@ export default function ContactForm() {
               </div>
 
               {/* Service custom dropdown */}
-              <div ref={dropdownRef} className="relative w-full pb-1 md:col-span-2">
+              <div ref={dropdownRef} className="relative w-full pb-1">
                 <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
                   {formatTypography("Вид услуги *")}
                 </span>
@@ -337,7 +337,7 @@ export default function ContactForm() {
                 </AnimatePresence>
               </div>
 
-              <div className="relative w-full pb-1 md:col-span-2">
+              <div className="relative w-full pb-1">
                 <span className="block text-[10.5px] font-medium uppercase tracking-[0.14em] text-[var(--fg-muted)] mb-1">
                   {formatTypography("Задача")}
                 </span>
