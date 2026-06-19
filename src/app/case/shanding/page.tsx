@@ -159,7 +159,7 @@ export default function ShandingCase() {
             >
               <video
                 ref={videoRef}
-                src="/case/shanding/Shanding.webm"
+                src="/case/Shanding/Shanding.webm"
                 autoPlay
                 muted
                 loop

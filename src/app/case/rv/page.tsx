@@ -101,7 +101,7 @@ export default function CompassCase() {
             }}
           >
             <video
-              src="/case/Роман Рыкунов и Владислав Кудряшов.webm"
+              src="/case/Рыкунов и Кудряшов.webm"
               autoPlay
               muted
               loop
@@ -142,7 +142,7 @@ export default function CompassCase() {
             >
               <video
                 ref={videoRef}
-                src="/case/rv/RV.webm"
+                src="/case/RV/RV.webm"
                 autoPlay
                 muted
                 loop
