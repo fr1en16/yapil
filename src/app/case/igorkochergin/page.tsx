@@ -66,7 +66,7 @@ export default function IgorKocherginCase() {
                 letterSpacing: "-0.01em",
               }}
             >
-              {formatTypography("Лендинг")}
+              {formatTypography("трейдер")}
             </p>
           </section>
 

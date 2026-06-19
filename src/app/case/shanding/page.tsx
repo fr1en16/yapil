@@ -105,7 +105,7 @@ export default function ShandingCase() {
                 letterSpacing: "-0.01em",
               }}
             >
-              {formatTypography("Логистическая компания")}
+              {formatTypography("логистическая компания")}
             </p>
           </section>
 

@@ -430,7 +430,7 @@ export default function CompassCase() {
                 letterSpacing: "-0.01em",
               }}
             >
-              {formatTypography("Брендинг и корпоративный сайт для консалтинговой компании")}
+              {formatTypography("консалтинговая компания #1 в Узбекистане")}
             </p>
           </section>
 

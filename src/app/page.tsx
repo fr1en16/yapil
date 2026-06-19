@@ -4,7 +4,7 @@ import Services from '@/components/Services';
 import Cases from '@/components/Cases';
 import MediaBlock from '@/components/MediaBlock';
 import Clock from '@/components/Clock';
-import ContactForm from '@/components/ContactForm';
+
 
 
 export default function Home() {
@@ -34,11 +34,6 @@ export default function Home() {
 
           {/* Block 3: Cases */}
           <Cases />
-
-          <hr className="divider" />
-
-          {/* Block 4: Contact Form */}
-          <ContactForm />
 
           <hr className="divider" />
 

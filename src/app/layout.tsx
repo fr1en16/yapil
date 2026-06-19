@@ -23,6 +23,20 @@ export const metadata: Metadata = {
     url: 'https://yapil.art',
     siteName: 'YAPIL',
     type: 'website',
+    images: [
+      {
+        url: 'https://yapil.art/me.webp',
+        width: 800,
+        height: 800,
+        alt: 'Яков Пилипюк — Мультидисциплинарный дизайнер',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Яков Пилипюк — Мультидисциплинарный дизайнер',
+    description: '8 лет превращаю бизнес-задачи в точные визуальные решения.',
+    images: ['https://yapil.art/me.webp'],
   },
   icons: {
     icon: [
@@ -46,6 +60,33 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': 'https://yapil.art/#person',
+        'name': 'Яков Пилипюк',
+        'jobTitle': 'Мультидисциплинарный дизайнер',
+        'url': 'https://yapil.art',
+        'sameAs': [
+          'https://t.me/yakov_pil',
+        ],
+        'description': 'Уже 8 лет превращаю сложные бизнес-задачи в точные визуальные системы. Айдентика, сайты любой сложности, полиграфия. Полный цикл разработки.',
+        'image': 'https://yapil.art/me.webp',
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://yapil.art/#website',
+        'url': 'https://yapil.art',
+        'name': 'Яков Пилипюк — Мультидисциплинарный дизайнер',
+        'publisher': {
+          '@id': 'https://yapil.art/#person',
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
@@ -63,6 +104,10 @@ export default function RootLayout({
 })();
             `,
           }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body>

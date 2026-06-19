@@ -96,7 +96,7 @@ export default function BebbleCase() {
                 letterSpacing: "-0.01em",
               }}
             >
-              {formatTypography("Сайт для бренда детской косметики")}
+              {formatTypography("болгарский бренд детской косметики")}
             </p>
           </section>
 

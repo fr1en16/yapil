@@ -79,7 +79,7 @@ export default function CompassCase() {
                   margin: 0,
                 }}
               >
-                Академия Запусков RV: Масштаб в золотом сечении
+                {formatTypography("Рыкунов и Кудряшов")}
               </h1>
             </div>
             <p
@@ -90,7 +90,7 @@ export default function CompassCase() {
                 letterSpacing: "-0.01em",
               }}
             >
-              {formatTypography("лендинг")}
+              {formatTypography("продюсеры")}
             </p>
           </section>
 

@@ -383,9 +383,7 @@ export default function BoyaCase() {
                 letterSpacing: "-0.01em",
               }}
             >
-              {formatTypography(
-                "Брендинг и корпоративный сайт для лакокрасочного бренда",
-              )}
+              {formatTypography("лакокрасочные материалы")}
             </p>
           </section>
 
