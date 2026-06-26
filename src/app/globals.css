@@ -16,6 +16,8 @@
   --border-light: rgba(0, 0, 0, 0.06);
   --wave-stroke: rgba(0, 0, 0, 0.05);
   --pattern-color: rgba(0, 0, 0, 0.4);
+  --page-transition-duration: 820ms;
+  --page-transition-easing: cubic-bezier(0.83, 0, 0.17, 1);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -103,6 +105,79 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-transition-current {
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+}
+
+.page-transition-previous {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+.page-transition-fallback-enter {
+  animation: yapil-page-reveal var(--page-transition-duration) var(--page-transition-easing) both;
+  will-change: transform;
+}
+
+::view-transition-group(root) {
+  animation-duration: var(--page-transition-duration);
+  animation-timing-function: var(--page-transition-easing);
+}
+
+::view-transition-old(root) {
+  animation: yapil-page-hold var(--page-transition-duration) var(--page-transition-easing) both;
+}
+
+::view-transition-new(root) {
+  animation: yapil-page-reveal var(--page-transition-duration) var(--page-transition-easing) both;
+  z-index: 2;
+}
+
+@keyframes yapil-page-hold {
+  from,
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes yapil-page-reveal {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.pdf-reader-arrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  z-index: 10;
+}
+
+.pdf-reader-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 h1, h2, h3, h4, h5, h6, label, input, textarea, button, select {
@@ -633,6 +708,15 @@ html.dark #webgl-canvas {
   }
   #webgl-canvas {
     display: none;
+  }
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+  .page-transition-fallback-enter {
+    animation: none;
   }
 }
 
