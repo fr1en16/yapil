@@ -54,6 +54,11 @@ import SmoothScroll from '@/components/SmoothScroll';
 import ThreeDPageTransition from '@/components/ThreeDPageTransition';
 import { FallingPattern } from '@/components/ui/falling-pattern';
 import Footer from '@/components/Footer';
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
 
 export default function RootLayout({
   children,
@@ -88,7 +93,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="ru" suppressHydrationWarning>
+    <html lang="ru" suppressHydrationWarning className={cn("font-sans", inter.variable)}>
       <head>
         {/* Anti-FOUC: set theme class before first paint */}
         <script
@@ -97,7 +102,11 @@ export default function RootLayout({
 (function() {
   try {
     var t = localStorage.getItem('theme');
-    if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (!t) {
+      var h = new Date().getHours();
+      t = (h >= 18 || h < 6) ? 'dark' : 'light';
+    }
+    if (t === 'dark') {
       document.documentElement.classList.add('dark');
     }
   } catch(e) {}

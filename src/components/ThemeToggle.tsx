@@ -7,9 +7,11 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
   const [theme, setTheme] = React.useState<'light' | 'dark'>('light')
 
   React.useEffect(() => {
-    const savedTheme =
-      localStorage.getItem('theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    let savedTheme = localStorage.getItem('theme')
+    if (!savedTheme) {
+      const hour = new Date().getHours()
+      savedTheme = (hour >= 18 || hour < 6) ? 'dark' : 'light'
+    }
 
     setTheme(savedTheme as 'light' | 'dark')
     document.documentElement.classList.toggle('dark', savedTheme === 'dark')

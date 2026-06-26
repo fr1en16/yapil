@@ -6,7 +6,10 @@ export default function Header() {
     <header>
       <div className="first-screen-container">
         <div className="photo-wrapper">
-          <img src="/me.webp" alt="Яков Пилипюк" className="me-photo" />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/me_m.webp" />
+            <img src="/me.webp" alt="Яков Пилипюк" className="me-photo" />
+          </picture>
         </div>
         <div className="header-top">
           <h1 className="site-name">{formatTypography("Яков Пилипюк")}</h1>
