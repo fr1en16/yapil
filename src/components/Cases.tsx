@@ -191,16 +191,6 @@ const sortedCases = [...cases].sort((a, b) => {
   return bActive - aActive;
 });
 
-// Preload all images immediately when module loads
-if (typeof window !== "undefined") {
-  sortedCases.forEach((c) => {
-    if (!/\.(webm|mp4)$/i.test(c.image)) {
-      const img = new window.Image();
-      img.src = c.image;
-    }
-  });
-}
-
 export default function Cases() {
   const [preview, setPreview] = useState<{ image: string } | null>(null);
   const [mounted, setMounted] = useState(false);

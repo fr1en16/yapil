@@ -201,14 +201,18 @@ function MediaSliderCard({
   const [isZoomed, setIsZoomed] = useState(false);
 
   useEffect(() => {
-    const lenis = (window as any).lenis;
+    const lenis = (window as any).yapilLenis ?? (window as any).lenis;
     if (isZoomed) {
-      lenis?.stop();
-    } else {
-      lenis?.start();
+      if (typeof lenis?.stop === "function") {
+        lenis.stop();
+      }
+    } else if (typeof lenis?.start === "function") {
+      lenis.start();
     }
     return () => {
-      lenis?.start();
+      if (typeof lenis?.start === "function") {
+        lenis.start();
+      }
     };
   }, [isZoomed]);
 
