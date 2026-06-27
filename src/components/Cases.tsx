@@ -58,6 +58,7 @@ const cases: CaseItem[] = [
     title: "Я тут",
     desc: "зона отдыха в Алматы",
     image: "/case/Я тут.webp",
+    href: "/case/yatut",
     service: "логотип, поддержка",
     year: "2024",
   },
