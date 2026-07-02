@@ -328,18 +328,6 @@ export default function Cases() {
         <span className="section-label">
           {formatTypography("Кейсы и проекты")}
         </span>
-        <div
-          style={{
-            fontSize: "13px",
-            color: "var(--fg-muted)",
-            marginBottom: "24px",
-            marginTop: "-8px",
-            letterSpacing: "-0.01em",
-            lineHeight: 1.1,
-          }}
-        >
-          {formatTypography("блок кейсов в работе, скоро он будет активен")}
-        </div>
         <ul className="case-list">
           {sortedCases.map((c, i) => {
             const inner = (

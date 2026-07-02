@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: 'Политика конфиденциальности — ИП PEAK | Яков Пилипюк',
   description:
     'Политика конфиденциальности и правила обработки персональных данных пользователей сайта yapil.art (ИП PEAK).',
+  alternates: {
+    canonical: '/privacy',
+  },
   openGraph: {
     title: 'Политика конфиденциальности — ИП PEAK | Яков Пилипюк',
     description:

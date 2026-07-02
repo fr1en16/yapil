@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Boya — Брендинг и сайт лакокрасочного бренда | Яков Пилипюк',
   description:
     'Разработка бренда и корпоративного сайта лакокрасочных материалов Boya. Создание современной дизайн-системы, веб-дизайн и верстка.',
+  alternates: { canonical: '/case/boya' },
   openGraph: {
     title: 'Boya — Брендинг и сайт лакокрасочного бренда | Яков Пилипюк',
     description:

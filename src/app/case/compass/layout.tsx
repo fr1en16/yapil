@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Compass — Брендинг и сайт консалтинговой компании | Яков Пилипюк',
   description:
     'Разработка бренда и корпоративного сайта узбекистанской консалтинговой компании Compass. Чистый B2B-интерфейс, строгая геометрия и выверенная дизайн-система.',
+  alternates: { canonical: '/case/compass' },
   openGraph: {
     title: 'Compass — Брендинг и сайт консалтинговой компании | Яков Пилипюк',
     description:

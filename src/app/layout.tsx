@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://yapil.art'),
   title: 'Яков Пилипюк — Мультидисциплинарный дизайнер',
   description:
     'Уже 8 лет превращаю сложные бизнес-задачи в точные визуальные системы. Айдентика, сайты любой сложности, полиграфия. Полный цикл разработки.',
@@ -17,6 +18,9 @@ export const metadata: Metadata = {
     'thepeak',
   ],
   authors: [{ name: 'Яков Пилипюк', url: 'https://yapil.art' }],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Яков Пилипюк — Мультидисциплинарный дизайнер',
     description: '8 лет превращаю бизнес-задачи в точные визуальные решения.',

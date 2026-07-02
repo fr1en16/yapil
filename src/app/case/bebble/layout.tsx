@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Bebble — Дизайн сайта детской косметики | Яков Пилипюк',
   description:
     'Разработка сайта для бренда детской косметики Bebble. Мягкий B2C-интерфейс в пастельных тонах, удобная витрина и поиск точек продаж по Казахстану.',
+  alternates: { canonical: '/case/bebble' },
   openGraph: {
     title: 'Bebble — Дизайн сайта детской косметики | Яков Пилипюк',
     description:

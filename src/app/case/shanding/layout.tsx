@@ -4,6 +4,7 @@ export const metadata: Metadata = {
   title: 'Shanding — Лендинг логистической компании | Яков Пилипюк',
   description:
     'Разработка адаптивного лендинга и сопутствующих рекламных материалов (полиграфии) для логистической компании Shanding.',
+  alternates: { canonical: '/case/shanding' },
   openGraph: {
     title: 'Shanding — Лендинг логистической компании | Яков Пилипюк',
     description:

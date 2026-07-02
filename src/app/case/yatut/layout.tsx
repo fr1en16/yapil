@@ -8,6 +8,7 @@ const image = "https://yapil.art/case/%D0%AF%20%D1%82%D1%83%D1%82.webp";
 export const metadata: Metadata = {
   title,
   description,
+  alternates: { canonical: "/case/yatut" },
   openGraph: {
     title,
     description,
